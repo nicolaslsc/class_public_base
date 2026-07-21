@@ -708,8 +708,6 @@ int primordial_analytic_spectrum_init(
   double one_tilt=0.;
   double one_running=0.;
   double one_correlation=0.;
-  double two_tilt=0.;
-  double two_pivot=0.;
 
   class_alloc(ppm->amplitude,
               ppm->md_size*sizeof(double *),
@@ -723,13 +721,6 @@ int primordial_analytic_spectrum_init(
               ppm->md_size*sizeof(double *),
               ppm->error_message);
 
-  class_alloc(ppm->ncut,
-              ppm->md_size*sizeof(double *),
-              ppm->error_message);
-  
-  class_alloc(ppm->kcut,
-              ppm->md_size*sizeof(double *),
-              ppm->error_message);
   
   for (index_md = 0; index_md < ppm->md_size; index_md++) {
 
@@ -759,8 +750,6 @@ int primordial_analytic_spectrum_init(
           one_amplitude = ppm->A_s;
           one_tilt = ppm->n_s;
           one_running = ppm->alpha_s;
-          two_tilt = ppm->ncut;
-          two_pivot = ppm->kcut;
         }
 
         if ((ppt->has_bi == _TRUE_) && (index_ic1 == ppt->index_ic_bi)) {
@@ -961,7 +950,8 @@ int primordial_analytic_spectrum(
     *pk = ppm->amplitude[index_md][index_ic1_ic2]
       *exp((ppm->tilt[index_md][index_ic1_ic2]-1.)*log(k/ppm->k_pivot)
            + 0.5 * ppm->running[index_md][index_ic1_ic2] * pow(log(k/ppm->k_pivot), 2.))
-              *(1+exp((ppm->ncut - ppm->tilt[index_md][index_ic1_ic2])*log(k/ppm->kcut)));
+                * ( 1. + pow(k / ppm->kcut, ppm->ncut - ppm->n_s)
+    );
 
   }
   else {
