@@ -4197,6 +4197,8 @@ int input_read_parameters_primordial(struct file_content * pfc,
         /* Read */
         class_read_double("n_s",ppm->n_s);
         class_read_double("alpha_s",ppm->alpha_s);
+        class_read_double("ncut",ppm->ncut);
+        class_read_double("kcut",ppm->kcut);
       }
 
       /** 1.b.1.2) Isocurvature/entropy perturbations */
@@ -6019,6 +6021,8 @@ int input_default_params(struct background *pba,
   /** 1.b.1.1) Adiabatic perturbations */
   ppm->n_s = 0.9660499;
   ppm->alpha_s = 0.;
+  ppm->ncut = 5;
+  ppm->kcut = 1000;
   /** 1.b.1.2) Isocurvature/entropy perturbations */
   ppm->f_bi = 1.;
   ppm->n_bi = 1.;
