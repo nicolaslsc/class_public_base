@@ -950,8 +950,7 @@ int primordial_analytic_spectrum(
     *pk = ppm->amplitude[index_md][index_ic1_ic2]
       *exp((ppm->tilt[index_md][index_ic1_ic2]-1.)*log(k/ppm->k_pivot)
            + 0.5 * ppm->running[index_md][index_ic1_ic2] * pow(log(k/ppm->k_pivot), 2.))
-                * ( 1. + pow(k / ppm->kcut, ppm->ncut - ppm->n_s)
-    );
+                * ( 1. + 0.5*(1+tanh(log(k/ppm->kcut)/0.01)) * (pow(k / ppm->kcut, ppm->ncut - ppm->n_s)-1) );
 
   }
   else {
