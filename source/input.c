@@ -6021,7 +6021,7 @@ int input_default_params(struct background *pba,
   /** 1.b.1.1) Adiabatic perturbations */
   ppm->n_s = 0.9660499;
   ppm->alpha_s = 0.;
-  ppm->ncut = 5;
+  ppm->ncut = 0.9660499;
   ppm->kcut = 1000;
   /** 1.b.1.2) Isocurvature/entropy perturbations */
   ppm->f_bi = 1.;
