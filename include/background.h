@@ -146,6 +146,10 @@ struct background
   double z_eq;      /**< redshift at radiation/matter equality */
   double tau_eq;    /**< conformal time at radiation/matter equality [Mpc] */
 
+  /* kination-edit: Adding in peak of fKIN and corresponding redshift */
+  double a_c;
+  double fKIN;
+
   //@}
 
 
