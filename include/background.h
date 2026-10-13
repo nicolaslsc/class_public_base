@@ -147,8 +147,11 @@ struct background
   double tau_eq;    /**< conformal time at radiation/matter equality [Mpc] */
 
   /* kination-edit: Adding in peak of fKIN and corresponding redshift */
-  double a_c;
-  double fKIN;
+  double a_c; # scale factor at matter-to-kination transition 
+  double fKIN; # fraction of axion at a_c 
+  doube lambda_PQ; # U(1) breaking scale
+  double r_P; # ratio of masses in two-field model
+  double m_P; # mass of radial mode 
 
   //@}
 
